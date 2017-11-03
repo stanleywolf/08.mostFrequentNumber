@@ -1,0 +1,58 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _08.mostFrequentNumber
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //    long[] number =Console.ReadLine().Split(' ')
+            //        .Select(long.Parse).ToArray();
+            //    long frequent = 0;
+            //    long mostFrequent = 0;
+            //    long start = 0;
+            //    long numberToPrint = 0;
+            //    for (int i = 0; i < number.Length; i++)
+            //    {
+            //        for (int j = i + 1; j < number.Length; j++)
+            //        {
+            //            if (number[i] == number[j])
+            //            {
+            //                frequent++;
+            //                if (frequent > mostFrequent)
+            //                {
+            //                    mostFrequent = frequent;
+            //                    numberToPrint = number[i];
+            //                }
+            //            }
+            //        }
+
+            //        frequent = 0;
+            //    }
+            //    Console.WriteLine(numberToPrint);
+            ushort[] array = Console.ReadLine().Split(' ').Select(ushort.Parse).ToArray();
+            int[] count = new int[65536];
+
+            foreach (ushort num in array)
+            {
+                count[num]++;
+            }
+
+            int maxValue = count.Max();
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (count[array[i]] == maxValue)
+                {
+                    Console.WriteLine(array[i]);
+                    return;
+                }
+            }
+        }
+
+    }
+}
